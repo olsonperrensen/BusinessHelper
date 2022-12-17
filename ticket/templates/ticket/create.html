@@ -5,15 +5,24 @@
 <link rel="stylesheet" href="{% static 'ticket/create.css' %}">
 {% endblock  %}
 {% block content %}
-<form method="POST">
+<form name='form' id='form' method="POST">
     {% csrf_token %}
     <div class="mform">
-        <h5 class="lead">Submit your complaint</h5>
-        <label for="">Priority (  Low  /  Medium  /  High  )</label>
-        {{form.priority}}
+        <p class="lead text-center">
+            Submit your complaint
+          </p>
+        <label for="">Priority</label>
+        <select required id='priority' name='priority' class="form-select" aria-label="Default select example">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
         <label for="">Comment</label>
-        {{form.comment}}
-    <button type="submit" name="_submit" class="btn">Submit</button>
+        <textarea required name='comment' class="form-control" rows="5" id="comment"></textarea>
+        <br>
+          <div class="text-center">
+            <button type="submit" name="_submit" class="btn btn-primary">Submit</button>
+          </div>
     </div>
 </form>
 {% endblock  %}
