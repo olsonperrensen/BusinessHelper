@@ -10,6 +10,10 @@
     {% block styles %}{% endblock  %}
 </head>
 <body>
+    {% include 'material/includes/material_css.html' %}
+    {% include 'material/includes/material_js.html' %}
+    {% include 'ticket/includes/header.html' %}
     {% block content %}{% endblock  %}
+    {% include 'ticket/includes/footer.html' %}
 </body>
 </html>
