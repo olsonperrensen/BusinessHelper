@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Index{% endblock  %}
 {% block content %}
-Hello there
+<form method='POST'>
+    {% csrf_token %}
+    {{form}}
+    <button type='submit'>Send</button>
+</form>
 {% endblock  %}
