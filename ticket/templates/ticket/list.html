@@ -15,7 +15,7 @@
           <div class="badge"><span></span></div>
         </div>
         <div class="mt-5">
-          <h3 class="heading">Priority<br />{{ticket.priority}}</h3>
+          <h3 class="heading">Priority: {{ticket.priority}}</h3>
           <div class="mt-5">
             <div class="progress">
               <div
@@ -28,8 +28,15 @@
               ></div>
             </div>
             <div class="mt-3">
-              <pre>{{ticket.comment}}</pre
-              >
+                <pre class='lead'>Explanation:</pre>
+              <textarea readonly name="comment" id="comment" cols="45" rows="5">
+                {{ticket.comment}}
+              </textarea>
+            </div>
+            <div class="text-center">
+                <button class='btn btn-success'>Mark as solved</button>
+                <button class='btn btn-warning'>Notify manager</button>
+                <button class='btn btn-danger'>Reject</button>
             </div>
           </div>
         </div>
