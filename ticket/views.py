@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from django.views.generic import ListView,TemplateView
+from django.views.generic import ListView,TemplateView,DetailView
 from .models import Ticket
 from django.http import HttpResponse
 # Create your views here.
@@ -17,4 +17,8 @@ class ty(TemplateView):
 
 class ListView(ListView):
     template_name = 'ticket/list.html'
+    model=Ticket
+
+class DetailView(DetailView):
+    template_name='ticket/one.html'
     model=Ticket
