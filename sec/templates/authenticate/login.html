@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  .login {
+    margin: 0 auto;
+    padding: 20px;
+    width: 40%;
+  }
+</style>
+<div class="login">
+  <h1>Authenticate</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Log in</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
