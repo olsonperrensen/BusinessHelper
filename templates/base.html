@@ -21,7 +21,30 @@
     {% block styles %}{% endblock %}
   </head>
   <body>
-    {% include 'ticket/includes/header.html' %} {% block content %}{% endblock%} 
+    {% include 'ticket/includes/header.html' %}
+    <div class="container">
+      <div class="text-center">
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <div
+            class="alert alert-warning alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{message}}</strong>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% block content %}{% endblock%}
+    </div>
     {% include 'ticket/includes/footer.html' %}
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

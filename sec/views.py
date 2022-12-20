@@ -15,3 +15,8 @@ def login_user(req):
             return redirect('login')
 
     return render(req, 'authenticate/login.html')
+
+def logout_user(req):
+    logout(req)
+    messages.success(req, ("Logout OK"))
+    return redirect('homepage')

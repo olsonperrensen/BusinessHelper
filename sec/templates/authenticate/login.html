@@ -8,21 +8,6 @@
 </style>
 <div class="login">
   <h1>Authenticate</h1>
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>{{message}}</strong>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>
-    {% endfor %}
-  </ul>
-  {% endif %}
   <form action="" method="POST">
     {% csrf_token %}
     <div class="text-center">
