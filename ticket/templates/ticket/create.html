@@ -1,28 +1,47 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Index{% endblock  %}
+{% extends 'base.html' %} {% load static %} {% block title %}Index{% endblock %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'ticket/create.css' %}">
-{% endblock  %}
-{% block content %}
-<form name='form' id='form' method="POST">
-    {% csrf_token %}
-    <div class="mform">
-        <p class="lead text-center">
-            Submit your complaint
-          </p>
-        <label for="">Priority</label>
-        <select required id='priority' name='priority' class="form-select" aria-label="Default select example">
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select>
-        <label for="">Comment</label>
-        <textarea required name='comment' class="form-control" rows="5" id="comment"></textarea>
-        <br>
-          <div class="text-center">
-            <button type="submit" name="_submit" class="btn btn-primary">Submit</button>
-          </div>
+<link rel="stylesheet" href="{% static 'ticket/create.css' %}" />
+{% endblock %} {% block content %} {% if user.is_authenticated %}
+<form name="form" id="form" method="POST">
+  {% csrf_token %}
+  <div class="mform">
+    <p class="lead text-center">Submit your complaint</p>
+    <label for="">Priority</label>
+    <select
+      required
+      id="priority"
+      name="priority"
+      class="form-select"
+      aria-label="Default select example"
+    >
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <label for="">Comment</label>
+    <textarea
+      required
+      name="comment"
+      class="form-control"
+      rows="5"
+      id="comment"
+    ></textarea>
+    <br />
+    <div class="text-center">
+      <button type="submit" name="_submit" class="btn btn-primary">
+        Submit
+      </button>
     </div>
+  </div>
 </form>
-{% endblock  %}
+{% else %}
+<div class="col">
+  <div class="row">
+    <div class="text-center">
+      <img class='d-block m-auto' src="https://www.freeclipartnow.com/d/10510-1/padlock-silhouette.jpg" alt="">
+      <h4>Unauthorized</h4>
+<h3><a href="{% url 'login' %}">Log in</a></h3>
+    </div>
+  </div>
+</div>
+{% endif %} {% endblock %}
