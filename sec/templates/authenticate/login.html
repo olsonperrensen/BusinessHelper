@@ -11,8 +11,26 @@
   <form action="" method="POST">
     {% csrf_token %}
     <div class="text-center">
-        <button class="btn btn-primary" type="submit">Log in</button>
+      <div class="mb-3">
+        <label for="em" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="em"
+          placeholder="name@example.com"
+        />
+        <br />
+        <label for="pwd" class="form-label">Pass</label>
+        <input
+          type="password"
+          class="form-control"
+          name="pwd"
+          placeholder="********"
+        />
+      </div>
+      <button class="btn btn-primary" type="submit">Log in</button>
     </div>
   </form>
+  <hr />
 </div>
 {% endblock %}
