@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterUserForm
 # Create your views here.
 
 
@@ -27,7 +28,7 @@ def logout_user(req):
 
 def register_user(req):
     if req.method == 'POST':
-        form = UserCreationForm(req.POST)
+        form = RegisterUserForm(req.POST)
         if form.is_valid():
             form.save()
             user = authenticate(
@@ -35,5 +36,5 @@ def register_user(req):
             login(req, user)
             messages.success(req, ("You've registered!"))
     else:
-        form = UserCreationForm()
+        form = RegisterUserForm()
     return render(req, 'authenticate/register_user.html', {'form': form, })
