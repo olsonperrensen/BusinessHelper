@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  .login {
+    margin: 0 auto;
+    padding: 20px;
+    width: 40%;
+  }
+</style>
+<div class="login">
+  <h1>Create an account</h1>
+  <div class="text-center">
+    {% if form.errors %}
+    <ul>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong
+          >There was an error while processing your form. Try again.</strong
+        >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </ul>
+    {% endif %}
+  </div>
+  <form action="{% url 'register_user' %}" method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <div class="text-center">
+      <button class="btn btn-primary" type="submit">Register</button>
+    </div>
+  </form>
+  <hr />
+</div>
+{% endblock %}
