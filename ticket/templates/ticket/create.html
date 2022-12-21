@@ -6,6 +6,7 @@
   {% csrf_token %}
   <div class="mform">
     <p class="lead text-center">Submit your complaint</p>
+    <input type="hidden" id="author" name="author" value="{{user}}" />
     <label for="">Priority</label>
     <select
       required
@@ -38,9 +39,13 @@
 <div class="col">
   <div class="row">
     <div class="text-center">
-      <img class='d-block m-auto' src="https://www.freeclipartnow.com/d/10510-1/padlock-silhouette.jpg" alt="">
+      <img
+        class="d-block m-auto"
+        src="https://www.freeclipartnow.com/d/10510-1/padlock-silhouette.jpg"
+        alt=""
+      />
       <h4>Unauthorized</h4>
-<h3><a href="{% url 'login' %}">Log in</a></h3>
+      <h3><a href="{% url 'login' %}">Log in</a></h3>
     </div>
   </div>
 </div>

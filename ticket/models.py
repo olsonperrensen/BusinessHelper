@@ -7,8 +7,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Ticket(models.Model):
     def __str__(self):
         return f"""
-        #{self.pk} has {self.priority} priority
+        #{self.pk} by {self.author} has {self.priority} priority
         """
 
-    priority = models.CharField(max_length=6)
-    comment = models.CharField(max_length=5000)
+    priority = models.CharField(max_length=6, default='Low')
+    author = models.CharField(max_length=80, default='John Smith')
+    comment = models.CharField(max_length=5000, default='Lorem Ipsum')
