@@ -1,30 +1,58 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <div class="container mt-5 mb-3">
-  <div class="row">
+  <div class="row"> 
+    {% if ticket.author.strip.lower == user.username.strip.lower or user.is_superuser or user.username.strip.lower == ticket.manager.strip.lower%}
     <div class="col-md-4">
       <div class="card p-3 mb-2">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="icon"><i class="bx bxl-mailchimp"></i></div>
             <div class="ms-2 c-details">
-              <h6 class="mb-0">ticket.user</h6>
-              <span>x days ago</span>
+              <h6 class="mb-0 bg-black text-white text-center">
+                {{ticket.author}}
+              </h6>
+              <pre>{{ticket.date}}</pre>
             </div>
           </div>
-          <div class="badge"><span></span></div>
+          <div class="text-sm-center">Manager: <span><code>{{ticket.manager}}</code></span></div>
         </div>
         <div class="mt-5">
+          <h6>Works in {{ticket.department}}</h6>
+          <pre
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal{{ticket.pk}}"
+          ><a href="#">See attachments</a></pre>
           <h3 class="heading">Priority: {{ticket.priority}}</h3>
           <div class="mt-5">
             <div class="progress">
+              {% if ticket.priority == 'High' %}
               <div
-                class="progress-bar"
+                class="progress-bar bg-danger"
                 role="progressbar"
-                style="width: 50%"
+                style="width: 99%"
                 aria-valuenow="50"
                 aria-valuemin="0"
                 aria-valuemax="100"
               ></div>
+              {% elif ticket.priority == 'Medium'%}
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: 66%"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+              {% elif ticket.priority == 'Low'%}
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                style="width: 33%"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+              {% endif %}
             </div>
             <div class="mt-3">
               <pre class="lead">Explanation:</pre>
@@ -33,14 +61,57 @@
               </textarea>
             </div>
             <div class="text-center">
+              {% if user.is_superuser %}
               <button class="btn btn-success">Mark as solved</button>
               <button class="btn btn-warning">Notify manager</button>
               <button class="btn btn-danger">Reject</button>
+              {% else %}
+              <pre>Please wait for an IT personnel to handle the issue.</pre>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal{{ticket.pk}}"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel{{ticket.pk}}"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ticket}}</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              width="400"
+              src="{{ticket.evidence.url}}"
+              alt=""
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
 </div>
 {% else %}
