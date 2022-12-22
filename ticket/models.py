@@ -13,6 +13,8 @@ class Ticket(models.Model):
 
     # HIDDEN INPUT FIELDS SO IT BECOMES EASIER TO IDENTIFY USER
     author = models.CharField(max_length=80, default='John Smith')
+    manager = models.CharField(max_length=80, default='Sam Adams')
+    department = models.CharField(max_length=80, default='Finance')
     date = models.DateTimeField(auto_now=True)
     # PUBLICLY DISPLAYED FIELDS
     priority = models.CharField(max_length=6, default='Low')
