@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('ticket.urls'), name='index'),
     path('sec/', include('django.contrib.auth.urls')),
     path('sec/', include('sec.urls'))
+# EXPLICITELY OPEN UP OUR FOLDER TO THE WWW
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
