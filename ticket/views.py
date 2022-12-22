@@ -28,8 +28,10 @@ class DetailView(DetailView):
     model = Ticket
 
 class UpdateView(UpdateView):
-    template_name = 'ticket/one.html'
+    template_name = 'ticket/update.html'
     model = Ticket
+    fields = '__all__'
+    success_url = 'ty'
 
 
 class TemplateView(TemplateView):
