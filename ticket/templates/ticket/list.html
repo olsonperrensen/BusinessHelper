@@ -14,9 +14,10 @@
               <pre>{{ticket.date}}</pre>
             </div>
           </div>
-          <div class="badge"><span></span></div>
+          <div class="text-sm-center">Manager: <span><code>{{ticket.manager}}</code></span></div>
         </div>
         <div class="mt-5">
+          <h6>Works in {{ticket.department}}</h6>
           <pre
             data-bs-toggle="modal"
             data-bs-target="#exampleModal{{ticket.pk}}"
