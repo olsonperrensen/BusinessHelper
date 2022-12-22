@@ -1,6 +1,9 @@
+# After docker-compose up, do the following to unlock the staff featured (CRUD):
+# docker-compose exec dj python manage.py createsuperuser --noinput --username root --email root@tor.be
+# docker-compose exec dj python manage.py changepassword root
 version: '3.9'
 services:
- dj:
-  build: .
-  ports:
-    - "8000:8000"
+  dj:
+    build: .
+    ports:
+      - "8000:8000"
