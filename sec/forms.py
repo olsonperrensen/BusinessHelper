@@ -15,6 +15,7 @@ class RegisterUserForm(UserCreationForm):
     department = forms.CharField(max_length=70, widget=forms.TextInput(
         attrs={'class': 'form-control'}))
 
+# EVERYTHING BELOW WAS BORROWED FROM https://youtu.be/HdrOcreAXKk (credit goes to @Codemycom thus)
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'manager', 'department',
