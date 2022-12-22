@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% if user.is_authenticated %}
 <div class="container mt-5 mb-3">
   <div class="row">
-    {% for ticket in object_list%}
+    {% for ticket in object_list%} {% if ticket.author.strip == user.email.strip or user.is_superuser%}
     <div class="col-md-4">
       <div class="card p-3 mb-2">
         <div class="d-flex justify-content-between">
@@ -17,7 +17,10 @@
           <div class="badge"><span></span></div>
         </div>
         <div class="mt-5">
-          <pre data-bs-toggle="modal" data-bs-target="#exampleModal{{ticket.pk}}"><a href="#">See attachments</a></pre>
+          <pre
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal{{ticket.pk}}"
+          ><a href="#">See attachments</a></pre>
           <h3 class="heading">Priority: {{ticket.priority}}</h3>
           <div class="mt-5">
             <div class="progress">
@@ -85,7 +88,11 @@
             ></button>
           </div>
           <div class="modal-body">
-            <img width='400' src="https://oncall258.com/wp-content/uploads/2015/03/iStock_000054981982_Small.jpg" alt="">
+            <img
+              width="400"
+              src="https://oncall258.com/wp-content/uploads/2015/03/iStock_000054981982_Small.jpg"
+              alt=""
+            />
           </div>
           <div class="modal-footer">
             <button
@@ -99,7 +106,7 @@
         </div>
       </div>
     </div>
-    {% endfor %}
+    {% endif %} {% endfor %}
   </div>
 </div>
 {% else %}
