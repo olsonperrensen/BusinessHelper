@@ -20,8 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+    # MAIN LOGIC + REGISTRATION PATHS ADDED
     path('', include('ticket.urls'), name='index'),
     path('sec/', include('django.contrib.auth.urls')),
     path('sec/', include('sec.urls'))
-# EXPLICITELY OPEN UP OUR FOLDER TO THE WWW
+# EXPLICITELY OPEN UP OUR EVIDENCE FOLDER TO THE WWW
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

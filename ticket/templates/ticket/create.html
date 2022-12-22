@@ -1,7 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Index{% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'ticket/create.css' %}" />
-{% endblock %} {% block content %} {% if user.is_authenticated %}
+{% endblock %} 
+{% block content %} 
+{% comment %} ONLY FOR THOSE WITH AN ACCOUNT ... ELSE DENY ACCESS {% endcomment %}
+{% if user.is_authenticated %}
 <form name="form" id="form" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="mform">
@@ -54,6 +57,7 @@
     </div>
   </div>
 </form>
+{% comment %} DENY ACCESS FOR NON-REGISTERED USERS TRYING TO ACCESS THE SITE {% endcomment %}
 {% else %}
 <div class="col">
   <div class="row">

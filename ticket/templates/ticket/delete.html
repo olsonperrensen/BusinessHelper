@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated and user.is_superuser%}
 <div class="m-5 d-flex align-items-center justify-content-center">
   <form method="post">
     {% csrf_token %}
@@ -9,5 +9,20 @@
       <input class="btn btn-danger" type="submit" value="Delete" />
     </div>
   </form>
+</div>
+{% comment %} DENY ACCESS FOR NON-REGISTERED USERS TRYING TO ACCESS THE SITE {% endcomment %}
+{% else %}
+<div class="col">
+  <div class="row">
+    <div class="text-center">
+      <img
+        class="d-block m-auto"
+        src="https://www.freeclipartnow.com/d/10510-1/padlock-silhouette.jpg"
+        alt=""
+      />
+      <h4>Unauthorized</h4>
+      <h3><a href="{% url 'login' %}">Log in</a></h3>
+    </div>
+  </div>
 </div>
 {% endif %} {% endblock %}

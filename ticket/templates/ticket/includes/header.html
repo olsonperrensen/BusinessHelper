@@ -1,3 +1,5 @@
+{% comment %} STATIC ALLOWS US TO LOAD FILES UNDER THAT FOLDER NAME EITHER GLOBAL OR WITHIN THE APP SCOPE
+ {% endcomment %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'ticket/includes/header.css' %}" />
 <sectio class="nav">
@@ -12,6 +14,8 @@
     ><span class="m">D</span>
   </h3>
   <div class="nav-container">
+    {% comment %} URL IS EXACTLY THE SAME AS REVERSE(PATHNAME,ARGS=[]) BUT JUST FOR HTML... 
+    IT RECONSTRUCTS PATHS BASED ON THEIR NAME= ATRIBUTE IN URLS.PY{% endcomment %}
     <a class="nav-tab" href="{% url 'homepage'%}">HOME</a
     ><a class="nav-tab" href="{% url 'list'%}">TICKETS</a
     ><a class="nav-tab" href="{% url 'team' %}">TEAM</a><a class="nav-tab" href="">PROJECTS</a>
@@ -23,6 +27,7 @@
     {% endif %}
     <span class="nav-tab-slider"></span>
   </div>
+  {% comment %} SEE WHO IS LOGGED IN {% endcomment %}
   {% if user.is_authenticated %}
   <div class="nav-container2">
     <pre class="text-white">{{user}}</pre>

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+# RECOGNIZE OUR OWN 2 APPS (ticket,sec)
     'ticket',
     'sec',
     'django.contrib.admin',
@@ -56,6 +57,7 @@ ROOT_URLCONF = 'BusinessHelper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # ALLOW global templates
         'DIRS': [
             BASE_DIR / 'templates'
         ],
@@ -120,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+# ALLOW GLOBAL TEMPLATES
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]

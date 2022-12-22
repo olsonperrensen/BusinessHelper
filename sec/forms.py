@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 from django import forms
 
-
+# CUSTOM FORM THAT USES BOOTSTRAP AND EXTRA ADDED FIELDS
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={'class': 'form-control'}))
