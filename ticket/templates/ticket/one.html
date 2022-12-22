@@ -63,7 +63,7 @@
             <div class="text-center">
               {% if user.is_superuser %}
               <button class="btn btn-success">Mark as solved</button>
-              <button class="btn btn-warning">Edit</button>
+              <button class="btn btn-warning"><a class='text-white' href="{% url 'update' pk=ticket.pk %}">Edit</a></button>
               <button class="btn btn-danger">Reject</button>
               {% else %}
               <pre>Please wait for an IT personnel to handle the issue.</pre>
