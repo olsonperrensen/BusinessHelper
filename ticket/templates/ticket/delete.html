@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<div class='m-5 d-flex align-items-center justify-content-center'>
+<form method="post">{% csrf_token %}
+    <p class='text-white bg-black'>Are you sure you want to delete "{{ object }}"?</p>
+    <div class="text-center">
+        <input class='btn btn-danger' type="submit" value="Delete">
+    </div>
+</form>
+</div>
+{% endif %} {% endblock %}

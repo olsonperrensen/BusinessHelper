@@ -31,7 +31,13 @@ class UpdateView(UpdateView):
     template_name = 'ticket/update.html'
     model = Ticket
     fields = '__all__'
-    success_url = 'ty'
+    success_url = 'list'
+
+class DeleteView(DeleteView):
+    template_name = 'ticket/delete.html'
+    model = Ticket
+    fields = '__all__'
+    success_url = 'list'
 
 
 class TemplateView(TemplateView):
