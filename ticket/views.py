@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, TemplateView, DetailView
 from .models import Ticket
 from sec.models import User
@@ -27,11 +27,13 @@ class DetailView(DetailView):
     template_name = 'ticket/one.html'
     model = Ticket
 
+
 class UpdateView(UpdateView):
     template_name = 'ticket/update.html'
     model = Ticket
     fields = '__all__'
     success_url = 'list'
+
 
 class DeleteView(DeleteView):
     template_name = 'ticket/delete.html'

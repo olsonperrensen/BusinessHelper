@@ -7,6 +7,6 @@ urlpatterns = [
     path('list', views.ListView.as_view(), name='list'),
     path('<int:pk>', views.DetailView.as_view(), name='one'),
     path('u<int:pk>', views.UpdateView.as_view(), name='update'),
-        path('d<int:pk>', views.DeleteView.as_view(), name='delete'),
+    path('d<int:pk>', views.DeleteView.as_view(), name='delete'),
     path('team', views.TemplateView.as_view(), name='team'),
 ]
