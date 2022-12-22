@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<div class="m-5 d-flex align-items-center justify-content-center text-center">
+    <div class="card" style="width: 18rem;">
+        <img src="https://cdn3.iconfinder.com/data/icons/black-easy/128/538478-user_128x128.png" 
+        width='100'
+        class="d-block mx-auto" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{user}}</h5>
+          <p class="card-text">Employee working at the '{{user.department}}' department</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Reports to '{{user.manager}}'</li>
+          <li class="list-group-item">Identity number '{{user.pk}}'</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">LinkedIn</a>
+          <a href="#" class="card-link">Github</a>
+        </div>
+      </div>
+</div>
+{% else %}
+<div class="col">
+  <div class="row">
+    <div class="text-center">
+      <img
+        class="d-block m-auto"
+        src="https://www.freeclipartnow.com/d/10510-1/padlock-silhouette.jpg"
+        alt=""
+      />
+      <h4>Unauthorized</h4>
+      <h3><a href="{% url 'login' %}">Log in</a></h3>
+    </div>
+  </div>
+</div>
+{% endif %} {% endblock %}
