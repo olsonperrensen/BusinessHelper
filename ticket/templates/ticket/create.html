@@ -2,12 +2,13 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'ticket/create.css' %}" />
 {% endblock %} {% block content %} {% if user.is_authenticated %}
-<form name="form" id="form" method="POST">
+<form name="form" id="form" method="POST" enctype='multipart/form-data'>
   {% csrf_token %}
   <div class="mform">
     <p class="lead text-center">Submit your complaint</p>
     <input type="hidden" id="author" name="author" value="{{user}}" />
     <label for="">Priority</label>
+    <br>
     <select
       required
       id="priority"
@@ -19,6 +20,10 @@
       <option value="Medium">Medium</option>
       <option value="Low">Low</option>
     </select>
+    <br>
+    <label class="form-label" for="customFile">Evidence</label>
+    <input required accept="image/*" type="file" class="form-control" id="evidence" name='evidence' />
+    <br>
     <label for="">Comment</label>
     <textarea
       required
