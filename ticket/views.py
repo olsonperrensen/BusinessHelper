@@ -9,6 +9,7 @@ from django.http import HttpResponse
 
 class CreateView(CreateView):
     template_name = 'ticket/create.html'
+    # INFORM WHERE TO LOOK FOR FIELDS TO PROPAGATE IN HTML
     model = Ticket
     fields = '__all__'
     success_url = 'ty'
@@ -19,6 +20,7 @@ class ty(TemplateView):
 
 
 class ListView(ListView):
+    # BY DEFAULT IT GIVES 'object_list' AS THE FULL ARRAY OF TICKETS TO LOOP IN HTML
     template_name = 'ticket/list.html'
     model = Ticket
 

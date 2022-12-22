@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% if user.is_authenticated %}
 <div class="container mt-5 mb-3">
   <div class="row">
+    {% comment %} ONLY FOR SELF-TICKET-OWNERS, MANAGERS or SUPERUSERS LOGGED IN {% endcomment %}
     {% for ticket in object_list%} {% if ticket.author.strip.lower == user.username.strip.lower or user.is_superuser or user.username.strip.lower == ticket.manager.strip.lower%}
     <div class="col-md-4">
       <div class="card p-3 mb-2">
@@ -61,6 +62,7 @@
               </textarea>
             </div>
             <div class="text-center">
+              {% comment %} EXTRA ACTIONS ONLY FOR AUTHORISED STAFF {% endcomment %}
               {% if user.is_superuser %}
               <button class="btn btn-success">Mark as solved</button>
               <button class="btn btn-warning"><a class='text-white' href="{% url 'update' pk=ticket.pk %}">Edit</a></button>
@@ -73,7 +75,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal POPUP -->
     <div
       class="modal fade"
       id="exampleModal{{ticket.pk}}"
@@ -114,6 +116,7 @@
     {% endif %} {% endfor %}
   </div>
 </div>
+{% comment %} DENY ACCESS {% endcomment %}
 {% else %}
 <div class="col">
   <div class="row">
