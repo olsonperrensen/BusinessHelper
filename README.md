@@ -3,7 +3,7 @@
 <h6>Steps:</h6>
 <ul>
 <li>docker-compose up</li>
-<li>Port 8000 should be open in your localhost. Type 127.0.0.0:8000 on the browser to access the project</li>
+<li>Port 8000 should be open in your localhost. Type 127.0.0.1:8000 on the browser to access the project</li>
 </ul>
 <pre>Potential errors (if NOT run through Docker):</pre>
 <ul>
